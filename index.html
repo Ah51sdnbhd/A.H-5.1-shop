@@ -3,100 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A.H 5.1 shop</title>
+  <title>A.H 5.1 Shop</title>
+  <!-- Tipografi elegan -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
+    /* Latar belakang dengan gradasi lembut */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e9ecef, #f8f9fa);
       margin: 0;
-      padding: 20px;
+      padding: 40px 20px;
     }
+    
+    /* Kontainer utama dengan bayang-bayang halus dan sudut lengkung */
     .container {
       max-width: 800px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
+    
+    .container:hover {
+      transform: translateY(-3px);
+    }
+    
+    /* Tajuk utama dengan font Playfair Display */
+    h1 {
+      text-align: center;
+      color: #333;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #d1d5db;
+      padding-bottom: 10px;
+    }
+    
     .option-section {
-      margin-bottom: 20px;
+      margin: 30px 0;
     }
+    
     .option-section h2 {
-      margin-top: 0;
+      color: #444;
+      font-size: 22px;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
     }
+    
+    /* Gaya pilihan dengan animasi halus */
     .option {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 10px;
+      border: 2px solid #dbeafe;
+      padding: 20px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       cursor: pointer;
-      transition: background-color 0.3s;
+      border-radius: 12px;
+      background: #f9fafb;
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     }
+    
     .option:hover {
-      background-color: #f0f0f0;
+      background-color: #e0f2fe;
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     }
+    
     .option img {
       width: 100px;
       height: auto;
+      border-radius: 8px;
       margin-right: 20px;
     }
+    
     .hidden {
       display: none;
     }
+    
+    /* Butang dengan gradasi dan animasi hover */
     button {
-      background-color: #25D366;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-size: 16px;
       cursor: pointer;
-      border-radius: 5px;
-      margin-right: 10px;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin: 5px;
     }
+    
     button:hover {
-      background-color: #1ebe5a;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      transform: translateY(-2px);
+    }
+    
+    /* Ringkasan pesanan dengan tipografi yang jelas */
+    #orderSummary {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Pesan MP3 Custom Anda</h1>
-    
+
     <!-- Pilihan Jenis MP3 -->
     <div class="option-section" id="mp3Selection">
       <h2>Pilih Jenis MP3</h2>
       <div class="option" onclick="selectMP3('biasa')">
-        <img src="kit tanpa bluetooth.jpg" alt="MP3 Biasa">
+        <img src="kittanpabluetooth.jpg" alt="MP3 Biasa">
         <span>MP3 Biasa (tanpa Bluetooth)</span>
       </div>
       <div class="option" onclick="selectMP3('bluetooth')">
-        <img src="kit bluetooth.jpg" alt="MP3 Bluetooth">
+        <img src="kitbluetooth.jpg" alt="MP3 Bluetooth">
         <span>MP3 dengan Bluetooth</span>
       </div>
     </div>
-    
+
     <!-- Pertanyaan Penggunaan Amplifier -->
     <div class="option-section hidden" id="amplifierQuestion">
       <h2>Apakah Anda ingin menggunakan amplifier?</h2>
       <button onclick="selectAmplifierOption('tidak')">Tidak</button>
       <button onclick="selectAmplifierOption('iya')">Iya</button>
     </div>
-    
-    <!-- Pilihan Amplifier (satu opsi sahaja) -->
+
+    <!-- Pilihan Amplifier -->
     <div class="option-section hidden" id="amplifierSelection">
       <h2>Pilih Amplifier</h2>
       <div class="option" onclick="selectAmplifier('pam8403')">
-        <img src="placeholder.jpg" alt="Amplifier PAM 8403">
+        <img src="OIP.jpg" alt="Amplifier PAM 8403">
         <span>Amplifier PAM 8403</span>
       </div>
     </div>
-    
-    <!-- Ringkasan Pesanan dan Butang WhatsApp -->
+
+    <!-- Ringkasan Pesanan -->
     <div class="option-section hidden" id="orderSection">
       <h2>Pesanan Anda</h2>
       <p id="orderSummary"></p>
-      <button onclick="submitOrder()">Buat Pesanan melalui WhatsApp</button>
+      <P><strong>box untuk tempat kit nya sudah dapat ya</strong></P>
+      <button onclick="submitOrder()">Buat Pesanan via WhatsApp</button>
     </div>
   </div>
 
@@ -107,14 +156,12 @@
       amplifier: ''
     };
 
-    // Pilihan jenis MP3
     function selectMP3(type) {
       order.mp3 = (type === 'biasa') ? 'MP3 Biasa (tanpa Bluetooth)' : 'MP3 dengan Bluetooth';
       document.getElementById('mp3Selection').classList.add('hidden');
       document.getElementById('amplifierQuestion').classList.remove('hidden');
     }
 
-    // Pilihan penggunaan amplifier
     function selectAmplifierOption(option) {
       order.amplifierUsed = (option === 'iya') ? 'Menggunakan Amplifier' : 'Tanpa Amplifier';
       document.getElementById('amplifierQuestion').classList.add('hidden');
@@ -126,7 +173,6 @@
       }
     }
 
-    // Pilihan amplifier yang dipilih
     function selectAmplifier(amplifier) {
       order.amplifier = 'Amplifier PAM 8403';
       document.getElementById('amplifierSelection').classList.add('hidden');
@@ -134,20 +180,16 @@
       document.getElementById('orderSection').classList.remove('hidden');
     }
 
-    // Kemas kini ringkasan pesanan
     function updateOrderSummary() {
-      let summary = `Jenis MP3: ${order.mp3}<br>`;
-      summary += `Amplifier: ${order.amplifierUsed}`;
+      let summary = `Jenis MP3: ${order.mp3}<br>Amplifier: ${order.amplifierUsed}`;
       if (order.amplifier) {
         summary += ` - ${order.amplifier}`;
       }
       document.getElementById('orderSummary').innerHTML = summary;
     }
 
-    // Hantar pesanan melalui WhatsApp
     function submitOrder() {
-      // Gantikan 'yourNumber' dengan nombor WhatsApp anda dalam format antarabangsa, contohnya 6281234567890
-      let whatsappNumber = 'yourNumber';
+      let whatsappNumber = '6287760785587';
       let message = `Halo, saya ingin memesan:%0A- Jenis MP3: ${order.mp3}%0A- ${order.amplifierUsed}`;
       if (order.amplifier) {
         message += ` (${order.amplifier})`;
